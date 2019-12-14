@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="com.demosample.mvvm.model.Student"/>
+
+    <variable
+        name="mainModel"
+        type="com.demosample.mvvm.ui.main.MainViewModel"/>
+  </data>
+
+  <RelativeLayout
+      android:id="@+id/content_main"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      tools:context=".ui.main.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:text="Product Creation Screen"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{mainModel.student.name}"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_createProduct"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginTop="60dp">
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:hint="Enter Product Name"
+          android:id="@+id/productname"/>
+
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:hint="Enter Description Name"
+          android:layout_marginTop="10dp"
+          android:id="@+id/descriptionname"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:hint="Enter regularprice"
+          android:layout_marginTop="10dp"
+          android:id="@+id/regularprice"
+          android:inputType="number"
+          android:digits="0123456789"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:hint="Enter saleprice"
+          android:layout_marginTop="10dp"
+          android:id="@+id/saleprice"
+          android:inputType="number"
+          android:digits="0123456789"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_createProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->mainModel.doSomething()}"
+        android:text="Create Product"
+        android:layout_above="@+id/btn_showproduct"/>
+
+    <Button
+        android:id="@+id/btn_showproduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->mainModel.doSomething()}"
+        android:text="Show Product"
+        android:layout_alignParentBottom="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+  </RelativeLayout>
+</layout>

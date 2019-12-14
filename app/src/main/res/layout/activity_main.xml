@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="com.demosample.mvvm.model.Student"/>
+
+    <variable
+        name="mainModel"
+        type="com.demosample.mvvm.ui.main.MainViewModel"/>
+  </data>
+
+  <LinearLayout
+      android:id="@+id/content_main"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      tools:context=".ui.main.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{mainModel.student.name}"
+        android:visibility="gone"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:text="Product List Screen"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+  </LinearLayout>
+</layout>
